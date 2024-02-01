@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@300;400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@700&display=swap');
+@import './modules/default-config';
+@import './modules/dashboard-sibe-panel';
+@import './modules/dashboard-content';
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1306px;
+    margin: 0 auto;
+    @media  (min-width: 1090px) {
+        max-width: 1440px;
+        max-height: 1198px;
+        flex-direction: row;
+    }
+}
+.main {
+    background-color: #838383;
+    padding: 41px 95px 0 71px;
+    @media screen and (max-width:1110px) {
+        padding: 41px 15px 30px 15px;
+    }
+    &__title-inner {
+        margin-bottom: 46px;
+        .main__title {
+            margin: 0;
+            text-transform: capitalize;
+        }
+    }
+}
+
+#tab1, #tab3, #tab4, #tab {
+    display: none;
+}

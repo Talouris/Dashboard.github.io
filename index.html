@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            const arrTabs = document.querySelectorAll(".dashbours__side-bar-item-href");
+            const tabsItems = document.querySelectorAll(".action__section-inner");
+            
+            const [toggleState, setToggleState] = React.useState(2);
+            
+            arrTabs.forEach(function(item){
+                item.addEventListener("click", function() {
+                    let tabId = item.getAttribute("data-tab");
+                    let currentTab = document.querySelector(tabId);
+
+                    arrTabs.forEach(function(item) {
+                        item.classList.remove("active-tabs")
+                    })
+                    tabsItems.forEach(function(item) {
+                        item.classList.remove("active-tabs")
+                    })
+                    item.classList.add("active-tabs")
+                    currentTab.classList.add("active-content")
+
+                })
+            });
+             
+
+            function Sidebar() {
+                
+
+                
+
+                let activeIndexTab = 1;
+                const classDef ="dashbours__side-bar-item-href";
+
+                const toggleTab = (item) => {
+                    setToggleState(tabsBtn.indexOf(item)); 
+                    activeIndexTab = tabsBtn.indexOf(item);
+                }
+
+                const tabsBtn = [
+                    {
+                        dataName: 1,
+                        title: 'Product',
+                    },
+                    {
+                        dataName: 2,
+                        title: 'Customers',
+                    },
+                    {
+                        dataName: 3,
+                        title: 'Income',
+                    },
+                    {
+                        dataName: 4,
+                        title: 'Promote',
+                    },
+                    {
+                        dataName: 5,
+                        title: 'Help',
+                    }
+                ];
+                return (
+                    <div className="wrapper">
+                        <aside className="sidebar">
+                            <div className="dashbours__side-bar">
+                                <div className="dashbours__side-bar-inner">
+                                    <div className="dashbours__side-bar-logo-inner">
+                                        <h1 className="dashbours__side-bar-logo logo-fs">Dashboard</h1>
+                                    </div>
+                                    <div className="dashbours__side-bar-list-inner">
+                                        <div className="dashbours__side-bar-title def-fs-400">
+                                            <p className="dashbours__side-bar-title-text">Dashboard</p>
+                                        </div>
+                                        <ul className="dashbours__side-bar-list">
+                                            {tabsBtn.map((item) => (
+                                                <a href="#" 
+                                                    data-tab= {"#tab"+item.dataName}
+                                                    className={classDef}
+                                                    key={`${item.dataName}-${item.title}`} 
+                                                    onClick={(item) => toggleTab(item)}>
+                                                        <li className="dashbours__side-bar-item def-fs-400" 
+                                                            data-name={item.dataName}
+                                                        >{item.title}</li>
+                                                </a>)
+                                            )}   
+                                        </ul>    
+                                    </div>
+                                </div>
+                                <div className="dashbours__side-bar-profile-inner">
+                                        <div className="dashbours__side-bar-profile">
+                                            <div className="dashbours__side-bar-profile-img"></div>
+                                            <div className="dashbours__side-bar-profile-info">
+                                                <div className="dashbours__side-bar-profile-name def-fs-400">Evano</div>
+                                                <div className="dashbours__side-bar-profile-position">Project Manager</div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </aside>
+                    </div>
+                );
+            }
+
+            function Maincontent() {
+
+                const  personalInfo = [
+                    {
+                        id:1,
+                        name: "Jane Cooper",
+                        company: "Microsoft",
+                        phoneNumber: "(225) 555-0118",
+                        email: "jane@microsoft.com",
+                        country: "United States",
+                        status: "active" 
+                    },
+                    {
+                        id:2,
+                        name: "Floyd Miles",
+                        company: "Yahoo",
+                        phoneNumber: "(205) 555-0100",
+                        email: "floyd@yahoo.com",
+                        country: "Kiribati",
+                        status: "inactive"
+                    },
+                    {
+                        id:3,
+                        name: "Ronald Richards",
+                        company: "Adobe",
+                        phoneNumber: "(302) 555-0107",
+                        email: "ronald@adobe.com",
+                        country: "Israel",
+                        status: "inactive"
+                    },
+                    {
+                        id:4,
+                        name: "Marvin McKinney",
+                        company: "Tesla",
+                        phoneNumber: "(252) 555-0126",
+                        email: "marvin@tesla.com",
+                        country: "Iran",
+                        status: "active"
+                    },
+                    {
+                        id:5,
+                        name: "Jerome Bell",
+                        company: "Google",  
+                        phoneNumber: "(629) 555-0129",
+                        email: "jerome@google.com",
+                        country: "Réunion",
+                        status: "active"
+                    },
+                    {
+                        id:6,
+                        name: "Kathryn Murphy",
+                        company: "Microsoft",
+                        phoneNumber: "(406) 555-0120",
+                        email: "kathryn@microsoft.com",
+                        country: "Curaçao",
+                        status: "active"
+                    },
+                    {
+                        id:7,
+                        name: "Jacob Jones",
+                        company: "Yahoo",
+                        phoneNumber: "(208) 555-0112",
+                        email: "jacob@yahoo.com",
+                        country: "Brazil",
+                        status: "active"
+                    },
+                    {
+                        id:8,
+                        name: "Kristin Watson",
+                        company: "Facebook",
+                        phoneNumber: "(704) 555-0127",
+                        email: "kristin@facebook.com",
+                        country: "Åland Islands",
+                        status: "inactive"
+                    }
+                ];
+
+                const defContentClass = "action__section-inner";
+                const defClassButton = "action__section-action-status def-table-fs-500";
+
+                return (
+                    <main className="main">
+                        <div className="main__title-inner">
+                            <h2 className="main__title main__title-fs-24">Hello Evano👋🏼,</h2>
+                        </div>
+                        <div className={defContentClass} id="tab1"></div>
+                        <div className={defContentClass} id="tab2">
+                            <div className="action__section">
+                                <div className="action__section-header">
+                                    <div className="action__section-title-holder">
+                                        <h3 className="action__section-title">All Customers</h3>
+                                        <p className="action__section-sub-title">Active Members</p>
+                                    </div>
+                                    <div className="action__section-search-holder">
+                                        <input className="action__section-input" placeholder="Search" type="search"/>
+                                    </div>
+                                </div>
+                                <div className="action__section-table-inner">
+                                    <div className="action__section-table">
+                                        <div className="action__section-storke-title">
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Customer Name</h5>
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Company</h5>
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Phone Number</h5>
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Email</h5>
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Country</h5>
+                                            <h5 className="action__section-row-element-th def-table-fs-500">Status</h5>
+                                        </div>   
+                                        <div className="action__section-info-elements">
+                                            {
+                                                personalInfo.map((item)=> (
+                                                    <div className="action__section-info-element" key={item.phoneNumber}>
+                                                        <div className="action__section-storke info-elements">
+                                                            <h6 className="action__section-row-element-td def-table-fs-500 name-lenght"><span className="caption-mobile">Name: <br className="br-mobile"/></span>{item.name}</h6>
+                                                            <h6 className="action__section-row-element-td def-table-fs-500 company-lenght"><span className="caption-mobile">Company: <br className="br-mobile"/></span>{item.company}</h6>
+                                                            <h6 className="action__section-row-element-td def-table-fs-500 phone-lenght"><span className="caption-mobile">Phone: <br className="br-mobile"/></span>{item.phoneNumber}</h6>
+                                                            <h6 className="action__section-row-element-td def-table-fs-500 email-lenght"><span className="caption-mobile">Email: <br className="br-mobile"/></span>{item.email}</h6>
+                                                            <h6 className="action__section-row-element-td def-table-fs-500 country-lenght"><span className="caption-mobile">Country: <br className="br-mobile"/></span>{item.country}</h6>
+                                                            <div className="action__section-row-element-td">
+                                                                <span className="caption-mobile">Status:</span>
+                                                                <button className={defClassButton + " " +item.status}>{item.status}</button>    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="action__section-footer">
+                                    <div className="action__section-data-entries">
+                                        <p className="action__section-entries-title">Showing data 1 to 8 of  256K entries</p>    
+                                    </div>    
+                                    <div className="action__section-pages-slider">
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">&#60;</div>
+                                        </a>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">1</div>
+                                        </a>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">2</div>
+                                        </a>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">3</div>
+                                        </a>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">4</div>
+                                        </a>
+                                        <span className="dots">...</span>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">40</div>
+                                        </a>
+                                        <a href="#" className="action__section-page-href">
+                                            <div className="action__section-page-slider pages-slider-fs-12">&#62;</div>
+                                        </a>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={defContentClass} id="tab3"></div>
+                        <div className={defContentClass} id="tab4"></div>
+                        <div className={defContentClass} id="tab5"></div>
+                    </main>
+                )
+            }
+
+            return (
+                    <div className="container"> 
+                        <Sidebar/>
+                        <Maincontent/>
+                    </div>
+                )
+            }   
+        const domContainer = document.getElementById('root');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(<App />); 
+    </script>
+</body>
+</html>
